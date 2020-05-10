@@ -52,6 +52,8 @@ namespace AntsColonyUI {
 	private: System::Windows::Forms::DataGridView^ TablePheromones;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::DataGridView^ TableDataset;
+	private: System::Windows::Forms::PictureBox^ Graph;
+	private: System::Windows::Forms::Button^ button1;
 
 	private:
 		/// <summary>
@@ -73,15 +75,18 @@ namespace AntsColonyUI {
 			this->TablePheromones = (gcnew System::Windows::Forms::DataGridView());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->TableDataset = (gcnew System::Windows::Forms::DataGridView());
+			this->Graph = (gcnew System::Windows::Forms::PictureBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TablePheromones))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TableDataset))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Graph))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// TextBoxFilename
 			// 
 			this->TextBoxFilename->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
-			this->TextBoxFilename->Location = System::Drawing::Point(539, 75);
+			this->TextBoxFilename->Location = System::Drawing::Point(475, 75);
 			this->TextBoxFilename->Multiline = true;
 			this->TextBoxFilename->Name = L"TextBoxFilename";
 			this->TextBoxFilename->Size = System::Drawing::Size(225, 40);
@@ -92,7 +97,7 @@ namespace AntsColonyUI {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(535, 52);
+			this->label1->Location = System::Drawing::Point(471, 52);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(229, 20);
 			this->label1->TabIndex = 1;
@@ -102,7 +107,7 @@ namespace AntsColonyUI {
 			// 
 			this->ButtonOpenFile->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->ButtonOpenFile->Location = System::Drawing::Point(581, 121);
+			this->ButtonOpenFile->Location = System::Drawing::Point(517, 121);
 			this->ButtonOpenFile->Name = L"ButtonOpenFile";
 			this->ButtonOpenFile->Size = System::Drawing::Size(147, 40);
 			this->ButtonOpenFile->TabIndex = 2;
@@ -126,7 +131,7 @@ namespace AntsColonyUI {
 			this->TablePheromones->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->TablePheromones->Location = System::Drawing::Point(24, 52);
 			this->TablePheromones->Name = L"TablePheromones";
-			this->TablePheromones->Size = System::Drawing::Size(414, 639);
+			this->TablePheromones->Size = System::Drawing::Size(379, 639);
 			this->TablePheromones->TabIndex = 4;
 			// 
 			// label3
@@ -134,7 +139,7 @@ namespace AntsColonyUI {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label3->Location = System::Drawing::Point(607, 183);
+			this->label3->Location = System::Drawing::Point(543, 183);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(86, 25);
 			this->label3->TabIndex = 5;
@@ -143,16 +148,36 @@ namespace AntsColonyUI {
 			// TableDataset
 			// 
 			this->TableDataset->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->TableDataset->Location = System::Drawing::Point(504, 211);
+			this->TableDataset->Location = System::Drawing::Point(440, 211);
 			this->TableDataset->Name = L"TableDataset";
 			this->TableDataset->Size = System::Drawing::Size(297, 480);
 			this->TableDataset->TabIndex = 6;
+			// 
+			// Graph
+			// 
+			this->Graph->Location = System::Drawing::Point(777, 52);
+			this->Graph->Name = L"Graph";
+			this->Graph->Size = System::Drawing::Size(616, 630);
+			this->Graph->TabIndex = 7;
+			this->Graph->TabStop = false;
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(717, 143);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(45, 40);
+			this->button1->TabIndex = 8;
+			this->button1->Text = L"button1";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Interface::button1_Click);
 			// 
 			// Interface
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(836, 703);
+			this->ClientSize = System::Drawing::Size(1405, 703);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->Graph);
 			this->Controls->Add(this->TableDataset);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->TablePheromones);
@@ -164,6 +189,7 @@ namespace AntsColonyUI {
 			this->Text = L"Interface";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TablePheromones))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TableDataset))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Graph))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -171,5 +197,8 @@ namespace AntsColonyUI {
 #pragma endregion
 	private: System::Void ButtonOpenFile_Click(System::Object^ sender, System::EventArgs^ e);
 	private: void FillPheromonesTable(vector<VERTEX*> vertexes);
+	private: void FillDatasetTable(vector<VERTEX*> vertexes);
+	private: void DrawGraph(vector<VERTEX*> vertexes);
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

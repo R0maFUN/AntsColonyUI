@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <map>
-#include <unordered_map>
+//#include <unordered_map>
 #include "truck.h"
 using namespace std;
 
@@ -26,8 +26,8 @@ private:
 	vertexTYPE type;
 	u_int capacity;
 	u_int filledCapacity;
-	unordered_map<VERTEX*, double>* pheromones = new unordered_map<VERTEX*, double>; // pheromones on the way from this vertex to the next ones
-	unordered_map<VERTEX*, double>* distances = new unordered_map<VERTEX*, double>; // distances on the way from this vertex to the next ones
+	map<VERTEX*, double>* pheromones = new map<VERTEX*, double>; // pheromones on the way from this vertex to the next ones
+	map<VERTEX*, double>* distances = new map<VERTEX*, double>; // distances on the way from this vertex to the next ones
 public:
 	VERTEX()
 	{
@@ -68,6 +68,21 @@ public:
 		return this->type;
 	}
 
+	double GetX()
+	{
+		return this->x;
+	}
+
+	double GetY()
+	{
+		return this->y;
+	}
+
+	u_int GetFilledCapacity()
+	{
+		return this->filledCapacity;
+	}
+
 	double GetPheromone(VERTEX* destination) // returns the amount of pheromone on the edge from this vertex to other
 	{
 		if (this->id < destination->GetID())
@@ -76,7 +91,7 @@ public:
 			return (*destination->pheromones)[this];
 	}
 
-	unordered_map<VERTEX*, double>* GetPheromones() // returns the hash table of pheromones on each edge from this vertex
+	map<VERTEX*, double>* GetPheromones() // returns the hash table of pheromones on each edge from this vertex
 	{
 		return pheromones;
 	}
