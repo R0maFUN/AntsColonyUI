@@ -1,0 +1,5 @@
+﻿  Interface.cpp
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\vertex.h(46,32): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\vertex.h(57,32): warning C4018: <: несоответствие типов со знаком и без знака
+  AntsAlgorithm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
+  AntsColonyUI.vcxproj -> C:\Users\roma1\source\repos\AntsColonyUI\Debug\AntsColonyUI.exe

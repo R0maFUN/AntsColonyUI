@@ -1,0 +1,3 @@
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Debug\AntsColonyUI.vcxprojAssemblyReference.cache
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Debug\AntsColonyUI.Interface.resources
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Debug\AntsColonyUI.vcxproj.GenerateResource.cache
