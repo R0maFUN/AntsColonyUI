@@ -1,9 +1,9 @@
 ﻿  Interface.cpp
 C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\vertex.h(46,32): warning C4018: <: несоответствие типов со знаком и без знака
 C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\vertex.h(57,32): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(115,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(116,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(122,11): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(123,11): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(119,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(120,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(126,11): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(127,11): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
   AntsAlgorithm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
   AntsColonyUI.vcxproj -> C:\Users\roma1\source\repos\AntsColonyUI\Debug\AntsColonyUI.exe

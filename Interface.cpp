@@ -12,6 +12,7 @@ u_int vertexAmount;
 u_int vertexCapacity;
 double x, y;
 vector<VERTEX*> vertexes;
+int ZoomExp = 1;
 
 [STAThreadAttribute]
 int main()
@@ -100,7 +101,10 @@ void AntsColonyUI::Interface::FillDatasetTable(vector<VERTEX*> vertexes)
 
 void AntsColonyUI::Interface::DrawGraph(vector<VERTEX*> vertexes)
 {
-	Graphics^ im = Graph->CreateGraphics();
+	//Graphics^ im = Graph->CreateGraphics();
+	Bitmap^ Img = gcnew Bitmap(Graph->Width, Graph->Height);
+	Graph->Image = Img;
+	Graphics^ im = Graphics::FromImage(Img);
 
 	Color^ col = gcnew Color();
 
@@ -112,30 +116,65 @@ void AntsColonyUI::Interface::DrawGraph(vector<VERTEX*> vertexes)
 
 	for (auto vert : vertexes)
 	{
-		int x1 = vert->GetX()*5 ;
-		int y1 = vert->GetY() * 5 ;
+		int x1 = vert->GetX()*ZoomExp;
+		int y1 = vert->GetY() *ZoomExp ;
 		
 		im->DrawEllipse(penDot, x1, y1, 5, 5);
 
 		for (auto target : *vert->GetPheromones())
 		{
-			int x2 = target.first->GetX() * 5 ;
-			int y2 = target.first->GetY() * 5 ;
+			int x2 = target.first->GetX() * ZoomExp ;
+			int y2 = target.first->GetY() * ZoomExp ;
 
 			im->DrawLine(penLine, x1, y1, x2, y2);
 
 		}
 	}
-
+	delete im;
 }
 
 
 System::Void AntsColonyUI::Interface::button1_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	Graphics^ g = Graph->CreateGraphics();
-	Pen^ p = gcnew Pen(Color::Blue, 1.0f);
-	Point pt1 = Point(10, 10);
-	Point pt2 = Point(100, 100);
-	g->DrawLine(p, pt1, pt2);
+	Bitmap^ Img = gcnew Bitmap(Graph->Width , Graph->Height);
+	Graph->Image = Img;
+	Graphics^ g = Graphics::FromImage(Img);
+	//Graphics^ g = Graph->CreateGraphics();
+	//Color a = Color::FromArgb(0, 255, 0, 0);
+	//Pen^ p = gcnew Pen(a, 20.0f);
+	for (int y = 1; y < 15; ++y)
+	{
+		Color a = Color::FromArgb(y*10, 255, 0, 0);
+		Pen^ p = gcnew Pen(a, 7.0f);
+		Point pt1 = Point(10, y*10);
+		Point pt2 = Point(100, y*10);
+		g->DrawLine(p, pt1, pt2);
+	}
+	
+	return System::Void();
+}
+
+System::Void AntsColonyUI::Interface::ZoomIn_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	ZoomExp++;
+	DrawGraph(vertexes);
+	/*Graph->SizeMode = PictureBoxSizeMode::CenterImage;
+	Graph->Height += 50;
+	Graph->Width += 50;
+	Graph->SizeMode = PictureBoxSizeMode::Zoom;
+	return System::Void();
+	*/
+}
+
+System::Void AntsColonyUI::Interface::ZoomOut_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	ZoomExp--;
+	DrawGraph(vertexes);
+	/*
+	Graph->SizeMode = PictureBoxSizeMode::CenterImage;
+	Graph->Height -= 50;
+	Graph->Width -= 50;
+	Graph->SizeMode = PictureBoxSizeMode::StretchImage;
+	*/
 	return System::Void();
 }

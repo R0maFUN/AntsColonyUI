@@ -54,6 +54,8 @@ namespace AntsColonyUI {
 	private: System::Windows::Forms::DataGridView^ TableDataset;
 	private: System::Windows::Forms::PictureBox^ Graph;
 	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ ZoomIn;
+	private: System::Windows::Forms::Button^ ZoomOut;
 
 	private:
 		/// <summary>
@@ -77,6 +79,8 @@ namespace AntsColonyUI {
 			this->TableDataset = (gcnew System::Windows::Forms::DataGridView());
 			this->Graph = (gcnew System::Windows::Forms::PictureBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->ZoomIn = (gcnew System::Windows::Forms::Button());
+			this->ZoomOut = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TablePheromones))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TableDataset))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Graph))->BeginInit();
@@ -131,7 +135,7 @@ namespace AntsColonyUI {
 			this->TablePheromones->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->TablePheromones->Location = System::Drawing::Point(24, 52);
 			this->TablePheromones->Name = L"TablePheromones";
-			this->TablePheromones->Size = System::Drawing::Size(379, 639);
+			this->TablePheromones->Size = System::Drawing::Size(379, 682);
 			this->TablePheromones->TabIndex = 4;
 			// 
 			// label3
@@ -150,11 +154,12 @@ namespace AntsColonyUI {
 			this->TableDataset->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->TableDataset->Location = System::Drawing::Point(440, 211);
 			this->TableDataset->Name = L"TableDataset";
-			this->TableDataset->Size = System::Drawing::Size(297, 480);
+			this->TableDataset->Size = System::Drawing::Size(297, 523);
 			this->TableDataset->TabIndex = 6;
 			// 
 			// Graph
 			// 
+			this->Graph->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->Graph->Location = System::Drawing::Point(777, 52);
 			this->Graph->Name = L"Graph";
 			this->Graph->Size = System::Drawing::Size(616, 630);
@@ -171,11 +176,37 @@ namespace AntsColonyUI {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &Interface::button1_Click);
 			// 
+			// ZoomIn
+			// 
+			this->ZoomIn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->ZoomIn->Location = System::Drawing::Point(1042, 688);
+			this->ZoomIn->Name = L"ZoomIn";
+			this->ZoomIn->Size = System::Drawing::Size(46, 45);
+			this->ZoomIn->TabIndex = 9;
+			this->ZoomIn->Text = L"+";
+			this->ZoomIn->UseVisualStyleBackColor = true;
+			this->ZoomIn->Click += gcnew System::EventHandler(this, &Interface::ZoomIn_Click);
+			// 
+			// ZoomOut
+			// 
+			this->ZoomOut->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->ZoomOut->Location = System::Drawing::Point(1114, 689);
+			this->ZoomOut->Name = L"ZoomOut";
+			this->ZoomOut->Size = System::Drawing::Size(46, 45);
+			this->ZoomOut->TabIndex = 10;
+			this->ZoomOut->Text = L"-";
+			this->ZoomOut->UseVisualStyleBackColor = true;
+			this->ZoomOut->Click += gcnew System::EventHandler(this, &Interface::ZoomOut_Click);
+			// 
 			// Interface
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1405, 703);
+			this->ClientSize = System::Drawing::Size(1405, 746);
+			this->Controls->Add(this->ZoomOut);
+			this->Controls->Add(this->ZoomIn);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->Graph);
 			this->Controls->Add(this->TableDataset);
@@ -200,5 +231,7 @@ namespace AntsColonyUI {
 	private: void FillDatasetTable(vector<VERTEX*> vertexes);
 	private: void DrawGraph(vector<VERTEX*> vertexes);
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void ZoomIn_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void ZoomOut_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
