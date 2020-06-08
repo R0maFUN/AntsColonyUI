@@ -1,9 +1,54 @@
-﻿  Interface.cpp
-C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\vertex.h(46,32): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\vertex.h(57,32): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(119,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(120,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(126,11): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(127,11): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+﻿  AntsAlgorithm.cpp
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\vertex.h(47,32): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\vertex.h(58,32): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\AntsAlgorithm.cpp(7,12): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\AntsAlgorithm.cpp(16,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\AntsAlgorithm.cpp(38,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\AntsAlgorithm.cpp(59,34): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\AntsAlgorithm.cpp(100,34): warning C4018: <: несоответствие типов со знаком и без знака
+  Interface.cpp
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\vertex.h(47,32): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\vertex.h(58,32): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(29,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(148,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(149,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(155,11): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(156,11): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(157,52): warning C4244: аргумент: преобразование "_Ty2" в "int", возможна потеря данных
+          with
+          [
+              _Ty2=double
+          ]
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(180,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(184,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(185,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(189,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(190,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(211,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(215,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(216,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(220,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(221,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(242,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(252,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(253,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(257,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(258,10): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(362,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(433,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\Interface.cpp(436,21): warning C4018: <: несоответствие типов со знаком и без знака
+  ReadData.cpp
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\vertex.h(47,32): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\vertex.h(58,32): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\ReadData.cpp(57,41): warning C4244: +=: преобразование "double" в "int", возможна потеря данных
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\ReadData.cpp(138,20): warning C4018: <: несоответствие типов со знаком и без знака
+  truck.cpp
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\vertex.h(47,32): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\vertex.h(58,32): warning C4018: <: несоответствие типов со знаком и без знака
+  vertex.cpp
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\vertex.h(47,32): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\vertex.h(58,32): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...
+C:\Users\roma1\source\repos\AntsColonyUI\AntsColonyUI\AntsAlgorithm.cpp(12): warning C4715: LinearSearchID: значение возвращается не при всех путях выполнения
   AntsAlgorithm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
   AntsColonyUI.vcxproj -> C:\Users\roma1\source\repos\AntsColonyUI\Debug\AntsColonyUI.exe

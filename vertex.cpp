@@ -24,6 +24,25 @@ VERTEX::VERTEX(u_int id, vertexTYPE type, u_int capacity, double x, double y)
 	this->filledCapacity = 0;
 }
 
+VERTEX* VERTEX::clone()
+{
+	VERTEX* copy = new VERTEX;
+	copy->id = this->id;
+	copy->type = this->type;
+	copy->x = this->x;
+	copy->y = this->y;
+	copy->capacity = this->capacity;
+	copy->filledCapacity = this->filledCapacity;
+	//map<VERTEX*, double>* tstMap = new map<VERTEX*, double>;
+	//	*tstMap = *this->pheromones;
+	//copy->pheromones = tstMap;
+
+	//map<VERTEX*, double>* dstMap = new map<VERTEX*, double>; 
+	//*dstMap = *this->distances;
+	//copy->distances = dstMap;
+	return copy;
+}
+
 void VERTEX::FillCapacity(TRUCK* truck)  
 {
 	if (this->filledCapacity == this->capacity)

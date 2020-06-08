@@ -38,6 +38,7 @@ public:
 
 	VERTEX(u_int id, vertexTYPE type, u_int capacity, double x, double y);
 
+	VERTEX* clone();
 
 	void FillCapacity(TRUCK* truck);
 
@@ -58,9 +59,19 @@ public:
 			this->distances->insert(make_pair(vertexes[i], this->CalculateDistance(vertexes[i])));
 	}
 
+	void NullFilledCapacity()
+	{
+		this->filledCapacity = 0;
+	}
+
 	u_int GetID() 
 	{
 		return this->id;
+	}
+
+	u_int GetCapacity()
+	{
+		return this->capacity;
 	}
 
 	vertexTYPE GetType()
@@ -120,4 +131,11 @@ public:
 			(*destination->pheromones)[this] = newValue;
 	}
 
+};
+
+struct EDGE
+{
+	VERTEX* from;
+	VERTEX* dest;
+	int truckID;
 };

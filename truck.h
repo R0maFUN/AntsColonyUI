@@ -26,6 +26,12 @@ public:
 
 	TRUCK(u_int _id, u_int _capacity, u_int _location, VERTEX* _currentVertex);
 	
+	TRUCK* clone();
+
+	u_int GetID()
+	{
+		return id;
+	}
 
 	void Load() // if arrived to the warehouse
 	{

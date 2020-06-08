@@ -20,3 +20,14 @@ void TRUCK::Ride(VERTEX* destination) // changing the current location
 {
 	this->location = destination->GetID();
 }
+
+TRUCK* TRUCK::clone()
+{
+	TRUCK* copy = new TRUCK;
+	copy->id = this->id;
+	copy->capacity = this->capacity;
+	copy->filledCapacity = this->filledCapacity;
+	copy->currentVertex = this->currentVertex;
+	copy->location = this->location;
+	return copy;
+}
