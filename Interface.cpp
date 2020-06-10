@@ -410,20 +410,46 @@ void AntsColonyUI::Interface::MakeSolution2(vector<VERTEX*>& vertexes, vector<TR
 	}*/
 	//transform(vertexes.begin(), vertexes.end(), back_inserter(vertexesCopy), cloneFunctor());
 
-	while (vertexesCopy.size() > 1)
-	{
+
+
+
+	int totalTime = 0;
+	//while (vertexesCopy.size() > 1)
+	//{
+
 		for (auto truck : trucks)
 		{
-			while (truck->GetFilledCapacity() > 0 && vertexesCopy.size() > 1)
+			int currentTime = 0;
+			
+			while (truck->GetFilledCapacity() > 0 && vertexesCopy.size() > 1 && currentTime <= vertexes[0]->GetDueTime())
 			{
-				TruckRide(vertexes, vertexesCopy, truck, PheromoneAdded, totalDistance, way, way_edges);
+				vector<VERTEX*> availableVertexes;
+				for (int i = 0; i < vertexesCopy.size(); ++i)
+				{
+					int arrivalTime = ((vertexes[truck->GetCurrentVertexID()])->GetDistance(vertexes[vertexesCopy[i]->GetID()]) / truck->GetVelocity()) + currentTime;
+					if (arrivalTime > vertexesCopy[i]->GetDueTime() || vertexesCopy[i]->GetID() == truck->GetCurrentVertexID())
+						continue;
+					//VERTEX* tmp = vertexesCopy[i]->clone();
+					/*availableVertexes.push_back(vertexesCopy[i]);*/
+					//availableVertexes.push_back(tmp);
+					availableVertexes.push_back(vertexes[vertexesCopy[i]->GetID()]);
+				}
+				if (availableVertexes.size() == 0)
+				{
+					//currentTime = vertexes[0]->GetDueTime() + 10;
+					//continue;
+					break;
+				}
+				TruckRide(vertexes, vertexesCopy, availableVertexes, truck, PheromoneAdded, totalDistance, way, way_edges, currentTime);
 				DecreasePheromones(vertexesCopy, vaporizeSpeed);
 				//Sleep(300);
 				//FillPheromonesTable(vertexes);
 				//FillDatasetTable(vertexes);
 			}
+			totalTime += currentTime;
 		}
-	}
+		
+	//}
 
 	if (totalDistance < bestDistance)
 	{

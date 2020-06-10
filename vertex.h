@@ -26,6 +26,8 @@ private:
 	vertexTYPE type;
 	u_int capacity;
 	u_int filledCapacity;
+	int readyTime;
+	int dueTime;
 	map<VERTEX*, double>* pheromones = new map<VERTEX*, double>; // pheromones on the way from this vertex to the next ones
 	map<VERTEX*, double>* distances = new map<VERTEX*, double>; // distances on the way from this vertex to the next ones
 public:
@@ -37,6 +39,8 @@ public:
 	VERTEX(u_int id, vertexTYPE type, double x, double y);
 
 	VERTEX(u_int id, vertexTYPE type, u_int capacity, double x, double y);
+
+	VERTEX(u_int id, vertexTYPE type, u_int capacity, double x, double y, int readyTime, int dueTime);
 
 	VERTEX* clone();
 
@@ -62,6 +66,16 @@ public:
 	void NullFilledCapacity()
 	{
 		this->filledCapacity = 0;
+	}
+
+	int GetReadyTime()
+	{
+		return this->readyTime;
+	}
+
+	int GetDueTime()
+	{
+		return this->dueTime;
 	}
 
 	u_int GetID() 

@@ -89,12 +89,14 @@ void ReadData(string filename, vector<VERTEX*>& vertexes, unsigned int& truckcap
 
 			if (CustNo == 0) // if customer is a warehouse
 			{
-				VERTEX* warehouse = new VERTEX(0, vertexTYPE::warehouse, x, y);
+				VERTEX* warehouse = new VERTEX(0, vertexTYPE::warehouse, 99999999, x, y, StringToInt(parsed[4]), StringToInt(parsed[5]));
+				//VERTEX* warehouse = new VERTEX(0, vertexTYPE::warehouse, x, y);
 				vertexes.push_back(warehouse);
 			}
 			else   // if customer is a retailer
 			{
-				VERTEX* retailer = new VERTEX(CustNo, vertexTYPE::retailer, StringToInt(parsed[3]), x, y);
+				VERTEX* retailer = new VERTEX(CustNo, vertexTYPE::retailer, StringToInt(parsed[3]), x, y, StringToInt(parsed[4]), StringToInt(parsed[5]));
+				//VERTEX* retailer = new VERTEX(CustNo, vertexTYPE::retailer, StringToInt(parsed[3]), x, y);
 				vertexes.push_back(retailer);
 			}
 		}

@@ -15,6 +15,7 @@ private:
 	u_int filledCapacity;
 	u_int location; // id of current vertex
 	VERTEX* currentVertex;
+	int velocity;
 public:
 
 	TRUCK()
@@ -31,6 +32,11 @@ public:
 	u_int GetID()
 	{
 		return id;
+	}
+
+	int GetVelocity()
+	{
+		return this->velocity;
 	}
 
 	void Load() // if arrived to the warehouse
