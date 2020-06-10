@@ -24,7 +24,7 @@ VERTEX::VERTEX(u_int id, vertexTYPE type, u_int capacity, double x, double y)
 	this->filledCapacity = 0;
 }
 
-VERTEX::VERTEX(u_int id, vertexTYPE type, u_int capacity, double x, double y, int readyTime, int dueTime)
+VERTEX::VERTEX(u_int id, vertexTYPE type, u_int capacity, double x, double y, int readyTime, int dueTime, int serviceTime)
 {
 	this->id = id;
 	this->type = type;
@@ -34,6 +34,7 @@ VERTEX::VERTEX(u_int id, vertexTYPE type, u_int capacity, double x, double y, in
 	this->filledCapacity = 0;
 	this->readyTime = readyTime;
 	this->dueTime = dueTime;
+	this->serviceTime = serviceTime;
 }
 
 VERTEX* VERTEX::clone()
@@ -47,6 +48,7 @@ VERTEX* VERTEX::clone()
 	copy->filledCapacity = this->filledCapacity;
 	copy->readyTime = this->readyTime;
 	copy->dueTime = this->dueTime;
+	copy->serviceTime = this->serviceTime;
 	//map<VERTEX*, double>* tstMap = new map<VERTEX*, double>;
 	//	*tstMap = *this->pheromones;
 	//copy->pheromones = tstMap;

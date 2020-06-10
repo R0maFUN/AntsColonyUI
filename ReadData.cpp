@@ -89,19 +89,39 @@ void ReadData(string filename, vector<VERTEX*>& vertexes, unsigned int& truckcap
 
 			if (CustNo == 0) // if customer is a warehouse
 			{
-				VERTEX* warehouse = new VERTEX(0, vertexTYPE::warehouse, 99999999, x, y, StringToInt(parsed[4]), StringToInt(parsed[5]));
+				VERTEX* warehouse = new VERTEX(0, vertexTYPE::warehouse, 99999999, x, y, StringToInt(parsed[4]), StringToInt(parsed[5]), StringToInt(parsed[6]));
 				//VERTEX* warehouse = new VERTEX(0, vertexTYPE::warehouse, x, y);
 				vertexes.push_back(warehouse);
 			}
 			else   // if customer is a retailer
 			{
-				VERTEX* retailer = new VERTEX(CustNo, vertexTYPE::retailer, StringToInt(parsed[3]), x, y, StringToInt(parsed[4]), StringToInt(parsed[5]));
+				VERTEX* retailer = new VERTEX(CustNo, vertexTYPE::retailer, StringToInt(parsed[3]), x, y, StringToInt(parsed[4]), StringToInt(parsed[5]), StringToInt(parsed[6]));
 				//VERTEX* retailer = new VERTEX(CustNo, vertexTYPE::retailer, StringToInt(parsed[3]), x, y);
 				vertexes.push_back(retailer);
 			}
 		}
 	}
 	in.close();
+}
+
+void PrintWayToFile(vector<EDGE> way, string filename)
+{
+	ofstream out(filename);     // Open the input file
+	if (!out)
+	{
+		MessageBox::Show("Error when opening file", "Error!");
+		return;
+	}
+
+	out << "Truck[" << way[0].truckID << "] :  ";
+	for (int i = 0; i < way.size(); ++i)
+	{
+		out << "[" << way[i].from->GetID() << "] -> [" << way[i].dest->GetID() << "] t(" << way[i].time << ") :" << endl;
+		if (i != way.size() - 1 && way[i + 1].truckID != way[i].truckID)
+			out << endl << "Truck[" << way[i + 1].truckID << "] :  ";
+	}
+
+	out.close();
 }
 
 void setcur(int x, int y)//установка курсора на позицию  x y

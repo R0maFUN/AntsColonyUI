@@ -28,6 +28,7 @@ private:
 	u_int filledCapacity;
 	int readyTime;
 	int dueTime;
+	int serviceTime;
 	map<VERTEX*, double>* pheromones = new map<VERTEX*, double>; // pheromones on the way from this vertex to the next ones
 	map<VERTEX*, double>* distances = new map<VERTEX*, double>; // distances on the way from this vertex to the next ones
 public:
@@ -40,7 +41,7 @@ public:
 
 	VERTEX(u_int id, vertexTYPE type, u_int capacity, double x, double y);
 
-	VERTEX(u_int id, vertexTYPE type, u_int capacity, double x, double y, int readyTime, int dueTime);
+	VERTEX(u_int id, vertexTYPE type, u_int capacity, double x, double y, int readyTime, int dueTime, int serviceTime);
 
 	VERTEX* clone();
 
@@ -76,6 +77,11 @@ public:
 	int GetDueTime()
 	{
 		return this->dueTime;
+	}
+
+	int GetServiceTime()
+	{
+		return this->serviceTime;
 	}
 
 	u_int GetID() 
@@ -152,4 +158,5 @@ struct EDGE
 	VERTEX* from;
 	VERTEX* dest;
 	int truckID;
+	int time;
 };

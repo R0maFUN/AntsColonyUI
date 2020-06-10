@@ -70,6 +70,7 @@ namespace AntsColonyUI {
 	private: System::Windows::Forms::Button^ ShowSGraph;
 	private: System::Windows::Forms::Button^ ShowPGraph;
 	private: System::Windows::Forms::Button^ ShowBSolution;
+	private: System::Windows::Forms::Button^ button2;
 
 
 	private:
@@ -109,6 +110,7 @@ namespace AntsColonyUI {
 			this->ShowSGraph = (gcnew System::Windows::Forms::Button());
 			this->ShowPGraph = (gcnew System::Windows::Forms::Button());
 			this->ShowBSolution = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TablePheromones))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TableDataset))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Graph))->BeginInit();
@@ -371,11 +373,24 @@ namespace AntsColonyUI {
 			this->ShowBSolution->UseVisualStyleBackColor = true;
 			this->ShowBSolution->Click += gcnew System::EventHandler(this, &Interface::ShowBSolution_Click);
 			// 
+			// button2
+			// 
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button2->Location = System::Drawing::Point(1348, 29);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(56, 109);
+			this->button2->TabIndex = 23;
+			this->button2->Text = L"Print way to file";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &Interface::button2_Click);
+			// 
 			// Interface
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1405, 786);
+			this->Controls->Add(this->button2);
 			this->Controls->Add(this->ShowBSolution);
 			this->Controls->Add(this->ShowPGraph);
 			this->Controls->Add(this->ShowSGraph);
@@ -422,6 +437,7 @@ namespace AntsColonyUI {
 	public: void DrawWay();
 	public: void DrawBestWay();
 	public: void DrawBestWayEdges();
+	public: void DrawWayEdges();
 	public: void DrawEdge(int num);
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void ZoomIn_Click(System::Object^ sender, System::EventArgs^ e);
@@ -440,5 +456,6 @@ private: System::Void OpenFileDia_Click(System::Object^ sender, System::EventArg
 private: System::Void ShowPGraph_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void ShowSGraph_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void ShowBSolution_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

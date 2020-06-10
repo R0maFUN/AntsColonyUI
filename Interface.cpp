@@ -265,6 +265,43 @@ void AntsColonyUI::Interface::DrawBestWayEdges()
 	delete im;
 }
 
+void AntsColonyUI::Interface::DrawWayEdges()
+{
+	Graphics^ im = Graph->CreateGraphics();
+	Color^ col = gcnew Color();
+
+	Pen^ penDot = gcnew Pen(col->Black);
+	penDot->Width = 5;
+
+	Pen^ penLine = gcnew Pen(col->Black);
+	penLine->Width = 3;
+
+	for (int i = 0; i < way_edges.size(); ++i)
+	{
+		VERTEX vert = *way_edges[i].from;
+		VERTEX vert2 = *way_edges[i].dest;
+		if (i > 0 && way_edges[i].truckID != way_edges[i - 1].truckID)
+		{
+			Color nCol = Color::FromArgb(255, rand() % 255, rand() % 255, rand() % 255);
+			penLine->Color = nCol;
+			penDot->Color = nCol;
+		}
+		int x1 = vert.GetX() * ZoomExp + MoveGraphX;
+		int y1 = vert.GetY() * ZoomExp + MoveGraphY;
+
+		im->DrawEllipse(penDot, x1, y1, 10, 10);
+
+		int x2 = vert2.GetX() * ZoomExp + MoveGraphX;
+		int y2 = vert2.GetY() * ZoomExp + MoveGraphY;
+
+		im->DrawEllipse(penDot, x2, y2, 10, 10);
+
+		im->DrawLine(penLine, x1, y1, x2, y2);
+		Sleep(100);
+	}
+	delete im;
+}
+
 void AntsColonyUI::Interface::DrawEdge(int num)
 {
 	throw gcnew System::NotImplementedException();
@@ -295,44 +332,17 @@ System::Void AntsColonyUI::Interface::ZoomIn_Click(System::Object^ sender, Syste
 {
 	ZoomExp++;
 	DrawGraph(vertexes);
-	/*Graph->SizeMode = PictureBoxSizeMode::CenterImage;
-	Graph->Height += 50;
-	Graph->Width += 50;
-	Graph->SizeMode = PictureBoxSizeMode::Zoom;
-	return System::Void();
-	*/
 }
 
 System::Void AntsColonyUI::Interface::ZoomOut_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	ZoomExp--;
 	DrawGraph(vertexes);
-	/*
-	Graph->SizeMode = PictureBoxSizeMode::CenterImage;
-	Graph->Height -= 50;
-	Graph->Width -= 50;
-	Graph->SizeMode = PictureBoxSizeMode::StretchImage;
-	*/
-	return System::Void();
 }
 
 System::Void AntsColonyUI::Interface::MakeSolutionButton_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	//vector<VERTEX*> saved;// = vertexesCopy;
-	//for (int i = 0; i < vertexesCopy.size(); ++i)
-	//{
-	//	VERTEX* tmp = vertexesCopy[i]->clone();
-	//	saved.push_back(tmp);
-	//}
 
-	//for (auto i : saved)
-	//{
-	//	i->SetPheromones(saved, 1);
-	//	i->SetDistances(saved);
-	//}
-
-	//while (1)
-	//{
 		way.clear();
 		double solutionDistance = 0;
 		for (auto vert : vertexesCopy)
@@ -342,7 +352,7 @@ System::Void AntsColonyUI::Interface::MakeSolutionButton_Click(System::Object^ s
 		}
 		trucksCopy.clear();
 		transform(trucks.begin(), trucks.end(), back_inserter(trucksCopy), cloneFunctor());
-		MakeSolution2(vertexesCopy, trucksCopy, 0.001, 0, solutionDistance);
+		MakeSolution2(vertexesCopy, trucksCopy, 0.0008, 0, solutionDistance);
 		// Drawing the phermones table
 		FillPheromonesTable(vertexesCopy);
 		FillDatasetTable(vertexesCopy);
@@ -363,21 +373,7 @@ System::Void AntsColonyUI::Interface::MakeSolutionButton_Click(System::Object^ s
 				bestWay.push_back(way[j]);
 			//break;
 		}
-		/*else {
-			vertexesCopy.clear();
-			for (int i = 0; i < saved.size(); ++i)
-			{
-				VERTEX* tmp = saved[i]->clone();
-				vertexesCopy.push_back(tmp);
-			}
-
-			for (auto i : vertexesCopy)
-			{
-				i->SetPheromones(vertexesCopy, 1);
-				i->SetDistances(vertexesCopy);
-			}
-		}*/
-	//}
+		
 	return System::Void();
 }
 
@@ -403,20 +399,24 @@ void AntsColonyUI::Interface::MakeSolution2(vector<VERTEX*>& vertexes, vector<TR
 	vector<VERTEX*> vertexesCopy = vertexes;
 	way.clear();
 	way_edges.clear();
-	/*for (int i = 0; i < vertexes.size(); ++i)
-	{
-		VERTEX* tmp = vertexes[i]->clone();
-		vertexesCopy.push_back(tmp);
-	}*/
-	//transform(vertexes.begin(), vertexes.end(), back_inserter(vertexesCopy), cloneFunctor());
+	//vector<VERTEX*> saved;
+	//for (int i = 0; i < vertexesCopy.size(); ++i)
+	//{
+	//	VERTEX* tmp = vertexesCopy[i]->clone();
+	//	saved.push_back(tmp);
+	//}
 
-
-
+	//for (auto i : saved)
+	//{
+	//	//i->SetPheromones(vertexesCopy , 1);
+	//	for (int j = i->GetID() + 1; j < saved.size(); ++j)
+	//	{
+	//		i->GetPheromones()->insert(pair<VERTEX*, double>(saved[j], vertexes[i->GetID()]->GetPheromone(vertexes[j])));
+	//	}
+	//	i->SetDistances(saved);
+	//}
 
 	int totalTime = 0;
-	//while (vertexesCopy.size() > 1)
-	//{
-
 		for (auto truck : trucks)
 		{
 			int currentTime = 0;
@@ -429,9 +429,7 @@ void AntsColonyUI::Interface::MakeSolution2(vector<VERTEX*>& vertexes, vector<TR
 					int arrivalTime = ((vertexes[truck->GetCurrentVertexID()])->GetDistance(vertexes[vertexesCopy[i]->GetID()]) / truck->GetVelocity()) + currentTime;
 					if (arrivalTime > vertexesCopy[i]->GetDueTime() || vertexesCopy[i]->GetID() == truck->GetCurrentVertexID())
 						continue;
-					//VERTEX* tmp = vertexesCopy[i]->clone();
-					/*availableVertexes.push_back(vertexesCopy[i]);*/
-					//availableVertexes.push_back(tmp);
+
 					availableVertexes.push_back(vertexes[vertexesCopy[i]->GetID()]);
 				}
 				if (availableVertexes.size() == 0)
@@ -463,6 +461,18 @@ void AntsColonyUI::Interface::MakeSolution2(vector<VERTEX*>& vertexes, vector<TR
 			bestWay_edges.push_back(way_edges[j]);
 		//break;
 	}
+	//else {
+	//	for (auto i : vertexes)
+	//	{
+	//		//i->SetPheromones(vertexesCopy , 1);
+	//		i->GetPheromones()->clear();
+	//		for (int j = i->GetID() + 1; j < vertexes.size(); ++j)
+	//		{
+	//			i->GetPheromones()->insert(pair<VERTEX*, double>(vertexes[j], saved[i->GetID()]->GetPheromone(saved[j])));
+	//		}
+	//		i->SetDistances(vertexes);
+	//	}
+	//}
 	//throw gcnew System::NotImplementedException();
 }
 
@@ -479,11 +489,11 @@ System::Void AntsColonyUI::Interface::StartLoopButton_Click(System::Object^ send
 		}
 		trucksCopy.clear();
 		transform(trucks.begin(), trucks.end(), back_inserter(trucksCopy), cloneFunctor());
-		for (auto i : vertexesCopy)
+		/*for (auto i : vertexesCopy)
 		{
 			i->SetPheromones(vertexesCopy, 1);
 			i->SetDistances(vertexesCopy);
-		}
+		}*/
 
 		double dist = 0;
 		MakeSolution2(vertexesCopy, trucksCopy, 0.0008, 0, dist);
@@ -566,12 +576,26 @@ System::Void AntsColonyUI::Interface::ShowPGraph_Click(System::Object^ sender, S
 
 System::Void AntsColonyUI::Interface::ShowSGraph_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	DrawWay();
-	Sleep(100);
+	DrawWayEdges();
+	//DrawWay();
+	//Sleep(100);
 }
 
 System::Void AntsColonyUI::Interface::ShowBSolution_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	//DrawBestWay();
 	DrawBestWayEdges();
+}
+
+System::Void AntsColonyUI::Interface::button2_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	if (TextBoxFilename->Text == "")
+	{
+		MessageBox::Show("The filename text box is empty!", "Error!");
+		return;
+	}
+	// Getting filename from text box
+	string filename;// = "C101.txt";
+	convert_String_To_string(TextBoxFilename->Text, filename);
+	PrintWayToFile(bestWay_edges, filename);
 }

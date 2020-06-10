@@ -104,11 +104,11 @@ void DecreasePheromones(vector <VERTEX*>& vertexes , double vaporizeSpeed)
 	}
 }
 
-void TruckRide(vector <VERTEX*>& vertexesOrig, vector<VERTEX*>& vertexes , TRUCK* currentTruck, double PheromoneAdded , double& totalDistance, vector<VERTEX>& way, vector<EDGE>& edges)
+void TruckRide(vector <VERTEX*>& vertexesOrig, vector<VERTEX*>& vertexes , vector<VERTEX*>& availableVertexes , TRUCK* currentTruck, double PheromoneAdded , double& totalDistance, vector<VERTEX>& way, vector<EDGE>& edges, int& currentTime)
 {
 
 
-	u_int destID = GetNextVertexID(vertexesOrig[currentTruck->GetCurrentVertexID()], vertexes);
+	u_int destID = GetNextVertexID(vertexesOrig[currentTruck->GetCurrentVertexID()], availableVertexes);
 	//destID = LinSrch(vertexes, vertexesOrig[destID]);
 	VisitVertex(currentTruck, vertexesOrig[destID]);
 
@@ -117,12 +117,28 @@ void TruckRide(vector <VERTEX*>& vertexesOrig, vector<VERTEX*>& vertexes , TRUCK
 
 	VERTEX* destVertex = vertexesOrig[destID];
 	way.push_back(*destVertex);
+	/*EDGE edge;
+	edge.from = currentVertex;
+	edge.dest = destVertex;
+	edge.truckID = currentTruck->GetID();
+	edges.push_back(edge);*/
+	totalDistance += currentVertex->GetDistance(destVertex);
+
+	currentTime += (currentVertex->GetDistance(destVertex) / currentTruck->GetVelocity());
+	if (currentTime < destVertex->GetReadyTime())
+		currentTime = destVertex->GetReadyTime();
+
 	EDGE edge;
 	edge.from = currentVertex;
 	edge.dest = destVertex;
 	edge.truckID = currentTruck->GetID();
+	edge.time = currentTime;
 	edges.push_back(edge);
-	totalDistance += currentVertex->GetDistance(destVertex);
+
+	currentTime += destVertex->GetServiceTime();
+
+	
+
 	if (PheromoneAdded == 0)
 		currentVertex->AddPheromone(destVertex, (static_cast<double> (1) / currentVertex->GetDistance(destVertex) )*5 );
 	else
